@@ -21,7 +21,7 @@ jobs:
           access-type: jwt
           export-secrets-to-outputs: true
           export-secrets-to-environment: true
-          api-url: 'https://192.168.240.137/akeyless-api/v2/'
+          api-url: "https://192.168.240.137/akeyless-api/v2/"
       - name: Export Secrets to Environment
         run: >
           echo '${{ steps.fetch-dynamic-secrets.outputs.postgres_dynamic_secret }}' | jq –r 'to_entries|map("POSTGRES_\(.key|ascii_upcase)=\(.value|tostring)")|.[]' >> $GITHUB_ENV
